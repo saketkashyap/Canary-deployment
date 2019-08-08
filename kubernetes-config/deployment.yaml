@@ -1,0 +1,27 @@
+kind: Deployment
+apiVersion: apps/v1beta2
+metadata:
+  name: canary-test-v2
+  namespace: dev
+  labels:
+    app: canary-test-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: canary-test
+      version: v2
+  template:
+    metadata:
+      labels:
+        app: canary-test
+        version: v2
+    spec:
+      containers:
+        - name: canary-test
+          image: docker.io/sakkashy/canary-test:latest
+          ports:
+          - name: test
+            containerPort: 8300
+            protocol: TCP
+          

@@ -1,0 +1,14 @@
+#Test the service at localhost:nodeport
+apiVersion: v1
+kind: Service
+metadata:
+  name: canaryservicev1
+  labels: 
+    app: canary-test
+spec:
+  type: NodePort
+  ports:
+  - port: 8300
+  selector:
+     app: canary-test
+     version: v1

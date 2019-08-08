@@ -1,0 +1,10 @@
+apiVersion: getambassador.io/v0
+kind:  Mapping
+metadata:
+  name:  canaryv2mapping
+spec:
+  prefix: /
+  headers:
+        test: canary-test
+  timeout_ms: 60000
+  service: canaryservicev2:8300
